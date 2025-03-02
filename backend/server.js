@@ -88,7 +88,7 @@ function generateSvgCode(text, typingSpeed, title) {
 }
 
 app.post('/submit-text', (req, res) => {
-    const text = ["Hello World", "Hi im zhengfu200"];
+    const text = ["Hello World", "Hi im zhengfu200, pls give me a star thanks!"];
     const typingSpeed = 0.1;
     const title = "My Code";
     if (!text) {
