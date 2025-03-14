@@ -10,12 +10,12 @@
       <span class="ms-2" style="color: lightgray;">{{ currentTime }}</span>
     </v-system-bar>
 
-    <v-typography variant="h2" class="text-h3 font-weight-bold material-title"
-      style="color: #ecf0f1 ; ">
+    <v-typography variant="h2" class="text-h3 font-weight-bold material-title" style="color: #ecf0f1 ; ">
       Code Profile
     </v-typography>
 
-    <v-typography variant="h5" class="text-h6 font-weight-medium subtitle" style="color: gray; margin-top: 10px;" ref="typingText">
+    <v-typography variant="h5" class="text-h6 font-weight-medium subtitle" style="color: gray; margin-top: 10px;"
+      ref="typingText">
     </v-typography>
 
     <v-card class="mx-auto" prepend-icon="md:widgets" width="80vw" style="margin-top: 20px; justify-items: center;"
@@ -24,7 +24,33 @@
         <span class="font-weight-black">Your Code Here</span>
       </template>
 
-      <v-textarea label=">" variant="outlined" style="width: 95%; height: 20vw;" @keyup="handleKeyup" v-model="code_input"></v-textarea>
+      <div>
+        <v-textarea label=">" variant="outlined" style="width: 95%; height: 20vw; margin: 0 auto" @keyup="handleKeyup"
+          v-model="code_input"></v-textarea>
+      </div>
+    </v-card>
+
+    <v-divider style="margin-top: 10px;"></v-divider>
+
+    <v-card class="mx-auto" prepend-icon="md:widgets" width="80vw" style="margin-top: 20px; justify-items: center;"
+      subtitle="Change the Style Of Your Code">
+      <template v-slot:title>
+        <span class="font-weight-black">Console</span>
+      </template>
+
+      <v-menu :location="location">
+        <template v-slot:activator="{ props }">
+          <v-btn color="primary" v-bind="props">
+            Dropdown
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="(item, index) in items" :key="index" :value="index">
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-card>
   </v-container>
 </template>
@@ -59,7 +85,7 @@ export default {
       if (event.key === "Enter") {
         const lines = code_input.value.split('\n');
         if (lines.length > 1) {
-          const previousLine = lines[lines.length - 2]; 
+          const previousLine = lines[lines.length - 2];
           console.log("上一行内容:", previousLine);
         }
       }

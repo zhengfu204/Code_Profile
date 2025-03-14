@@ -17,7 +17,7 @@ function getSvgWidth(text){
         return current.length > longest.length ? current : longest;
     }, "");
 
-    const background_width = (longestText.length + 2 )* 11 + 20;
+    const background_width = (longestText.length + 2 )* 13.5 + 20;
     return background_width;
 }
 
